@@ -22,13 +22,13 @@ class Controller
 
   void list(dynamic type)
   {
-    if (reflect(type).type.reflectedType == reflect(Employee).type.reflectedType)
+    if (type == Employee)
         employees.forEach((element) => print(element));
     else
         tasks.forEach((element) => print(element));
    }
 
-  void remove(dynamic type, int id) => reflect(type).type.reflectedType == Employee ? employees.remove(id) : tasks.remove(id);
+  void remove(dynamic type, int id) => type == Employee ? employees.remove(id) : tasks.remove(id);
 
   void giveTask(int employeeId, int taskId)
   {
