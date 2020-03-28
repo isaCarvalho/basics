@@ -28,7 +28,7 @@ class Controller
         tasks.forEach((element) => print(element));
    }
 
-  void remove(dynamic type, int id) => type == Employee ? employees.remove(id) : tasks.remove(id);
+  void remove(dynamic type, int id) => type == Employee ? employees.removeAt(id-1) : tasks.removeAt(id-1);
 
   void giveTask(int employeeId, int taskId)
   {
