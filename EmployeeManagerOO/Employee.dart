@@ -1,17 +1,13 @@
 class Employee
 {
-  int _id;
-  String _name;
-  String _cpf;
+  int id;
+  String name;
+  String cpf;
+
   double _payment;
   bool _profile = false; // if the employee is a boss
 
-  Employee(int id, String name, String cpf)
-  {
-    _id = id;
-    _name = name;
-    _cpf = cpf;
-  }
+  Employee(this.id, this.name, this.cpf);
 
   String setPayment(double payment)
   {
@@ -24,18 +20,12 @@ class Employee
 
   double getPayment() => _payment;
 
-  int getId() => _id;
-
-  String getName() => _name;
-
-  String getCpf() => _cpf;
-
   void setProfile(bool profile) => _profile = profile;
 
   bool getProfile() => _profile;
 
   @override
-  String toString() => "$_id - $_name - $_cpf";
+  String toString() => "$id - $name - $cpf";
 
   static Employee factory(int id, String name, String cpf) => new Employee(id, name, cpf);
 }

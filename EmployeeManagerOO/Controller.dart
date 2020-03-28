@@ -22,8 +22,7 @@ class Controller
 
   void list(dynamic type)
   {
-    print(reflect(type).type.reflectedType);
-    if (reflect(type).type.reflectedType == Employee)
+    if (reflect(type).type.reflectedType == reflect(Employee).type.reflectedType)
         employees.forEach((element) => print(element));
     else
         tasks.forEach((element) => print(element));
@@ -33,8 +32,8 @@ class Controller
 
   void giveTask(int employeeId, int taskId)
   {
-    var employeeName = employees[employeeId].getName();
-    var taskName = tasks[taskId].getName();
+    var employeeName = employees[employeeId-1].name;
+    var taskName = tasks[taskId-1].name;
 
     var map = new Map();
     map['employee'] = employeeName;
