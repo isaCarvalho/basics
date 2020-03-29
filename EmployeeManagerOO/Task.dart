@@ -7,9 +7,9 @@ class Task
 
   Task(this.id, this.name);
 
-  void setDescription(String description) => _description = description;
+  void set description(description) => _description = description;
 
-  String getDescription() => _description;
+  String get description => _description;
 
   @override
   String toString() => "$id - $name";

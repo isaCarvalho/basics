@@ -18,11 +18,11 @@ class Employee
     return "Payment setted!";
   }
 
-  double getPayment() => _payment;
+  double get payment => _payment;
 
-  void setProfile(bool profile) => _profile = profile;
+  void set profile(profile) => _profile = profile;
 
-  bool getProfile() => _profile;
+  bool get profile => _profile;
 
   @override
   String toString() => "$id - $name - $cpf";

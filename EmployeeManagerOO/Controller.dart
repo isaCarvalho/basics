@@ -1,39 +1,19 @@
-import 'Task.dart';
-import 'Employee.dart';
+import 'TaskController.dart';
+import 'EmployeeController.dart';
 import 'dart:mirrors';
 
 class Controller
 {
-  List<Employee> employees = new List();
-  List<Task> tasks = new List();
   List<Map> taskEmployees = new List();
 
-  void insertEmployee(String name, String cpf)
-  {
-    var employee = Employee.factory(employees.length + 1, name, cpf);
-    employees.add(employee);
-  }
+  void listObjects(dynamic type) => type.printList();
 
-  void insertTask(String name)
-  {
-    var task = Task.factory(tasks.length + 1, name);
-    tasks.add(task);
-  }
-
-  void list(dynamic type)
-  {
-    if (type == Employee)
-        employees.forEach((element) => print(element));
-    else
-        tasks.forEach((element) => print(element));
-   }
-
-  void remove(dynamic type, int id) => type == Employee ? employees.removeAt(id-1) : tasks.removeAt(id-1);
+  void remove(dynamic type, int id) => type.removeElement(id);
 
   void giveTask(int employeeId, int taskId)
   {
-    var employeeName = employees[employeeId-1].name;
-    var taskName = tasks[taskId-1].name;
+    var employeeName = EmployeeController.instance.list[employeeId-1].name;
+    var taskName = TaskController.instance.list[taskId-1].name;
 
     var map = new Map();
     map['employee'] = employeeName;

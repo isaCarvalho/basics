@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'Controller.dart';
-import 'Task.dart';
-import 'Employee.dart';
+import 'TaskController.dart';
+import 'EmployeeController.dart';
 
 class Main
 {
   static Controller controller = new Controller();
+  static EmployeeController employeeController = EmployeeController.instance;
+  static TaskController taskController = TaskController.instance;
 
   static void menuEmployee()
   {
@@ -26,19 +28,19 @@ class Main
         print("Please, digit the employee CPF: ");
         var cpf = stdin.readLineSync();
 
-        controller.insertEmployee(name, cpf);
+        employeeController.insert(name, cpf);
         break;
 
       case 2:
-        controller.list(Employee);
+        controller.listObjects(employeeController);
         print("\n-------------------------\nPlease digit the employee id: ");
 
         var id = int.parse(stdin.readLineSync());
-        controller.remove(Employee, id);
+        controller.remove(employeeController, id);
         break;
 
       case 3:
-        controller.list(Employee);
+        controller.listObjects(employeeController);
         break;
 
       case 4:
@@ -62,19 +64,19 @@ class Main
         print("Please, digit the task name: ");
         var name = stdin.readLineSync();
 
-        controller.insertTask(name);
+        taskController.insert(name);
         break;
 
       case 2:
-        controller.list(Task);
+        controller.listObjects(taskController);
         print("\n-------------------------\nPlease digit the task id: ");
 
         var id = int.parse(stdin.readLineSync());
-        controller.remove(Task, id);
+        controller.remove(taskController, id);
         break;
 
       case 3:
-        controller.list(Task);
+        controller.listObjects(taskController);
         break;
 
       case 4:
@@ -84,17 +86,15 @@ class Main
 
   static void giveTask()
   {
-    controller.list(Task);
+    controller.listObjects(taskController);
     print("\n-------------------------\nPlease digit the task id: ");
 
-    var employeeId = int.parse(stdin.readLineSync());
-    controller.remove(Task, employeeId);
+    var taskId = int.parse(stdin.readLineSync());
 
-    controller.list(Employee);
+    controller.listObjects(employeeController);
     print("\n-------------------------\nPlease digit the employee id: ");
 
-    var taskId = int.parse(stdin.readLineSync());
-    controller.remove(Employee, taskId);
+    var employeeId = int.parse(stdin.readLineSync());
 
     controller.giveTask(employeeId, taskId);
   }
